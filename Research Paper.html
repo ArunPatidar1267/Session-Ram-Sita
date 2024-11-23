@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Submission</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<style>/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+.container {
+  padding: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Back Button */
+.back-button {
+  font-size: 24px;
+  color: #333333;
+  cursor: pointer;
+}
+
+.back-button span {
+  display: inline-block;
+  padding: 10px 0;
+}
+
+/* Task Details */
+.task-details {
+  margin-top: 20px;
+}
+
+.due-date {
+  font-size: 14px;
+  color: #757575;
+  margin-bottom: 10px;
+}
+
+.task-details h1 {
+  font-size: 24px;
+  color: #9c27b0;
+  margin: 0;
+}
+
+/* Buttons */
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+button {
+  padding: 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.add-work {
+  background-color: #9c27b0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-work span {
+  font-size: 16px;
+}
+
+.submit {
+  background-color: #9c27b0;
+}
+
+button:active {
+  opacity: 0.9;
+}</style>
+<body>
+  <div class="container">
+    <!-- Back Button -->
+    <div class="back-button">
+      <span>&larr;</span>
+    </div>
+
+    <!-- Task Details -->
+    <div class="task-details">
+      <p class="due-date">Due Date: Nov 25, 23:59</p>
+      <h1>Research Paper</h1>
+    </div>
+
+    <!-- Buttons Section -->
+    <div class="buttons">
+      <button class="add-work">
+        <span>+ Add work</span>
+      </button>
+      <button class="submit">Submit</button>
+    </div>
+  </div>
+  <script>// Back button functionality
+document.querySelector('.back-button').addEventListener('click', () => {
+  alert('Back button clicked!');
+});
+
+// Add Work Button
+document.querySelector('.add-work').addEventListener('click', () => {
+  alert('Add work button clicked!');
+});
+
+// Submit Button
+document.querySelector('.submit').addEventListener('click', () => {
+  alert('Submit button clicked!');
+});</script>
+</body>
+</html>
