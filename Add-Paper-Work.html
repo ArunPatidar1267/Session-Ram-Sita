@@ -3,140 +3,147 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RAMSITA Conference Form</title>
+  <title>Ramsita Conference</title>
   <style>
     body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
-}
-
-header {
-  background-color: #3D52A0;
-  color: white;
-  text-align: center;
-  padding: 20px 0;
-}
-
-main {
-  max-width: 600px;
-  margin: 30px auto;
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
-
-label {
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-input {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1em;
-}
-
-button {
-  padding: 10px;
-  background-color: #3D52A0;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 1em;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #2e3e85;
-}
-
-#addAuthor {
-  margin-top: 10px;
-  background-color: #4CAF50;
-}
-
-#addAuthor:hover {
-  background-color: #45a049;
-}
-
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #8ef5e7;
+    }
+    .header {
+      background-color: #4d365f;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 24px;
+      font-weight: bold;
+      margin: 0 auto;
+      border-radius: 5px;
+    }
+    .form-container {
+      background-color: #f6e47b;
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 450px;
+      margin: 20px auto;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    form {
+      margin: 0;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input[type="text"], input[type="number"], input[type="email"], select {
+      width: 95%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .add-author-button {
+      align-items: center;
+      background-color: red;
+      color: white;
+      width: 30%;
+    }
+    .add-author-button:hover {
+      background-color: darkred;
+    }
+    .submit-button {
+      background-color: #3D52A0;
+      color: white;
+      width: 100%;
+      margin-top: 10px;
+    }
+    .submit-button:hover {
+      background-color: #2C3D7A;
+    }
+    .authors {
+      margin-top: 10px;
+    }
+    .authors input {
+      width: 95%;
+      display: inline-block;
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>RAMSITA CONFERENCE</h1>
-  </header>
-  <main>
+  <div class="header">RAMSITA CONFERENCE</div>
+  <div class="form-container">
     <form id="conferenceForm">
       <div class="form-group">
-        <label for="paperID">Track Name:</label>
-        <input type="text" id="paperID" name="paperID" required>
+        <label for="paperId">Paper ID:</label>
+        <input type="number" id="paperId" placeholder="Enter Paper ID" required />
       </div>
       <div class="form-group">
-        <label for="paperTitle">Supervisors:</label>
-        <input type="text" id="paperTitle" name="paperTitle" required>
+        <label for="title">Title:</label>
+        <input type="text" id="title" placeholder="Enter Title" required />
       </div>
       <div class="form-group">
-        <label>Session Chair:</label>
-        <div id="authorContainer">
-          <input type="text" name="authorName[]" placeholder="Author Name" required>
-        </div>
-        <button type="button" id="addAuthor">Add Author</button>
+        <label for="email">Email ID:</label>
+        <input type="email" id="email" placeholder="Enter Email ID" required />
+      </div>
+      <div class="form-group authors">
+        <label for="author">Author(s):</label>
+        <input type="text" class="author" placeholder="Enter Author Name" required />
+        <button type="button" class="add-author-button" id="addAuthor">+ Add</button>
       </div>
       <div class="form-group">
-        <label for="authorEmail">Author Email ID:</label>
-        <input type="email" id="authorEmail" name="authorEmail" required>
+        <label for="trackNumber">Track Number:</label>
+        <select id="trackNumber" required>
+          <option value="" disabled selected>Select Track Number</option>
+        </select>
       </div>
-      <button type="submit">Submit</button>
+      <button type="submit" class="submit-button">Submit</button>
     </form>
-  </main>
-  <script>
-    document.getElementById('addAuthor').addEventListener('click', function () {
-  const authorContainer = document.getElementById('authorContainer');
-  
-  const newAuthorInput = document.createElement('input');
-  newAuthorInput.type = 'text';
-  newAuthorInput.name = 'authorName[]';
-  newAuthorInput.placeholder = 'Author Name';
-  newAuthorInput.required = true;
-  
-  authorContainer.appendChild(newAuthorInput);
-});
+  </div>
 
-document.getElementById('conferenceForm').addEventListener('submit', function (e) {
-  e.preventDefault();
-  
-  const formData = new FormData(this);
-  const data = {};
-  
-  formData.forEach((value, key) => {
-    if (!data[key]) {
-      data[key] = value;
-    } else {
-      if (!Array.isArray(data[key])) {
-        data[key] = [data[key]];
-      }
-      data[key].push(value);
+  <script>
+    const authorsContainer = document.querySelector('.authors');
+    const addAuthorButton = document.getElementById('addAuthor');
+    const conferenceForm = document.getElementById('conferenceForm');
+    const trackNumberDropdown = document.getElementById('trackNumber');
+
+    for (let i = 1; i <= 13; i++) {
+      const option = document.createElement('option');
+      option.value = i;
+      option.textContent = i;
+      trackNumberDropdown.appendChild(option);
     }
-  });
-  
-  console.log('Form Data:', data);
-  alert('Form submitted successfully!');
-});
+
+    addAuthorButton.addEventListener('click', () => {
+      const newAuthorInput = document.createElement('input');
+      newAuthorInput.type = 'text';
+      newAuthorInput.className = 'author';
+      newAuthorInput.placeholder = 'Enter Author Name';
+      authorsContainer.insertBefore(newAuthorInput, addAuthorButton);
+    });
+
+    conferenceForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const paperId = document.getElementById('paperId').value;
+      const title = document.getElementById('title').value;
+      const email = document.getElementById('email').value;
+      const trackNumber = document.getElementById('trackNumber').value;
+      const authors = Array.from(document.querySelectorAll('.authors .author'))
+        .map(input => input.value)
+        .filter(Boolean);
+      alert(`Paper ID: ${paperId}\nTitle: ${title}\nEmail: ${email}\nAuthors: ${authors.join(', ')}\nTrack Number: ${trackNumber}`);
+    });
   </script>
 </body>
 </html>
